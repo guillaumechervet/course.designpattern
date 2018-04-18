@@ -1,14 +1,12 @@
-using System;
 using Xunit;
 
 namespace introduction
 {
     public class UnitTest1
     {
-        [Fact]
-        public void PassingTest()
+        private int Add(int x, int y)
         {
-            Assert.Equal(4, Add(2, 2));
+            return x + y;
         }
 
         [Fact]
@@ -16,10 +14,11 @@ namespace introduction
         {
             Assert.Equal(5, Add(2, 2));
         }
-        
-        int Add(int x, int y)
+
+        [Fact]
+        public void PassingTest()
         {
-            return x + y;
+            Assert.Equal(4, Add(2, 2));
         }
     }
-}    
+}

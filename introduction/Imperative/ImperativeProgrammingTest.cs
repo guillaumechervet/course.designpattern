@@ -3,50 +3,57 @@
 using System;
 using Xunit;
 
-namespace introduction
+namespace introduction.Imperative
 {
     public class ImperativeProgrammingTest
     {
-        public decimal CalculerMontant(PanierLigneArticle[] panierLigneArticles)
+        public decimal CalculerMontantPanier(PanierLigneArticle[] panierLigneArticles)
         {
             var montantTotal = 0;
             for (var i = 0; i < panierLigneArticles.Length; i++)
             {
                 var ligneArticle = panierLigneArticles[i];
                 var article = GetArticleFromDatabase(ligneArticle.Id);
-                switch (article.Type)
+                switch (article.Category)
                 {
-                    case "banana":
+                    case "food":
                         montantTotal += article.Price * 100 + article.Price * 12;
                         break;
-                    case "frigo":
+                    case "electronic":
                         montantTotal += article.Price * 100 + article.Price * 20 + 4;
                         break;
-                    case "chaise":
+                    case "desktop":
                         montantTotal += article.Price * 100 + article.Price * 20;
                         break;
                 }
             }
 
-            return montantTotal / 100;
+            return montantTotal;
         }
 
         public ArticleDatabase GetArticleFromDatabase(string id)
         {
-            #if MYTEST
+#if MYTEST
             switch (id)
             {
                 case "1":
-                    return new ArticleDatabase {Id = "1", Price = 1, Stock = 35, Type = "banana"};
+                    return new ArticleDatabase {Id = "1", Price = 1, Stock = 35, Type = "banana", Category = "food"};
                 case "2":
-                    return new ArticleDatabase {Id = "1", Price = 500, Stock = 20, Type = "frigo"};
+                    return new ArticleDatabase
+                    {
+                        Id = "1",
+                        Price = 500,
+                        Stock = 20,
+                        Type = "frigo",
+                        Category = "electronic"
+                    };
                 case "3":
-                    return new ArticleDatabase {Id = "1", Price = 1, Stock = 68, Type = "chaise"};
+                    return new ArticleDatabase {Id = "1", Price = 1, Stock = 68, Type = "chaise", Category = "desktop"};
                 default:
                     throw new NotImplementedException();
             }
-            #else
-            // TODO request a real database
+#else
+// TODO request a real database
             throw new NotImplementedException();
             #endif
         }
@@ -62,23 +69,9 @@ namespace introduction
                 new PanierLigneArticle {Id = "3", Number = 4}
             };
 
-            var montantTotal = CalculerMontant(ligneArticles);
+            var montantTotal = CalculerMontantPanier(ligneArticles);
 
-            Assert.Equal(montantTotal, 602);
+            Assert.Equal(montantTotal, 60232);
         }
-    }
-
-    public struct PanierLigneArticle
-    {
-        public string Id { get; set; }
-        public int Number { get; set; }
-    }
-
-    public struct ArticleDatabase
-    {
-        public string Id { get; set; }
-        public string Type { get; set; }
-        public int Price { get; set; }
-        public int Stock { get; set; }
     }
 }
