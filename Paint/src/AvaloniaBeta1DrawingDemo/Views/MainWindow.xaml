@@ -1,0 +1,30 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AvaloniaBeta1DrawingDemo.ViewModels;assembly=AvaloniaBeta1DrawingDemo"
+        Icon="resm:AvaloniaBeta1DrawingDemo.Assets.avalonia-logo.ico"
+        Title="Avalonia Simple Drawing">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+  <Grid>
+   
+
+
+<DockPanel LastChildFill="True">
+<StackPanel>
+       <Button Name="btnCreateCircle" DockPanel.Dock="Top" Height="25" Width="120" Content="Circle" Margin="5 5 5 5" />
+    <Button Name="btnCreateSquare"  DockPanel.Dock="Top"  Height="25" Width="120" Content="Squre" Margin="5 5 5 5" />
+    <Button Name="btnCreateTriangle" DockPanel.Dock="Top" Height="25" Width="120" Content="Triangle" Margin="5 5 5 5" HorizontalAlignment="Left" />
+</StackPanel>
+      <Canvas Name="drawingCanvas" >
+    </Canvas>
+</DockPanel>
+
+
+   
+  </Grid>
+ 
+  
+</Window>
