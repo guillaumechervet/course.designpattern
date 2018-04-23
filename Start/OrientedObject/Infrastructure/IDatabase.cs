@@ -1,4 +1,4 @@
-﻿namespace introduction.OrientedObject.Infrastructure
+﻿namespace Start.OrientedObject.Infrastructure
 {
     public interface IDatabase
     {

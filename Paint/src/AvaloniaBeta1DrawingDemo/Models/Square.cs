@@ -10,11 +10,10 @@ namespace AvaloniaBeta1DrawingDemo.Models
         public int Begin {get;set;}
         public int End {get;set;}
 
-        public Square(Canvas drawingCanvas, Color color) : base(drawingCanvas, color) { }
-
-        public override void Draw()
+        public Rectangle square;
+        public Square(Canvas drawingCanvas, Color color) : base(drawingCanvas, color)
         {
-            var square = new Rectangle();
+            square = new Rectangle();
             var colorBrush = new SolidColorBrush();
             colorBrush.Color = this.color;
             square.Fill = colorBrush;
@@ -22,15 +21,25 @@ namespace AvaloniaBeta1DrawingDemo.Models
             //square.   
             square.Width = 400;
             square.Height = 400;
-            
-             
+
+
             square.Margin = new Thickness(0, 50, 0, 0);
             //var container = new StackPanel();
             drawingCanvas.Children.Add(square);
-            Canvas.SetTop(square,2);
-            Canvas.SetLeft(square,2);
+            
+        }
+
+        public void Move(Point point)
+        {
+            Canvas.SetTop(square, point.X);
+            Canvas.SetLeft(square, point.Y);
+        }
+
+        public override void Draw()
+        {
             //this.drawingCanvas.Content = container;
             //this.drawingCanvas.
         }
+
     }
 }

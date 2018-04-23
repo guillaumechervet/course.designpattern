@@ -1,4 +1,4 @@
-namespace introduction
+namespace Start
 {
     public struct PanierLigneArticle
     {

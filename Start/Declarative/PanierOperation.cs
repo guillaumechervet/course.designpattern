@@ -1,4 +1,4 @@
-﻿namespace introduction.Declarative
+﻿namespace Start.Declarative
 {
     public class PanierOperations
     {

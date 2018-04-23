@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Immutable;
-using introduction.OrientedObject;
-using introduction.OrientedObject.Infrastructure;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace introduction.Declarative
+namespace Start.Declarative
 {
+    [TestClass]
     public class FunctionalTest
     {
-        [Fact]
+        [TestMethod]
         public void PassingTest()
         {
             // Récépérer article depuis base de données
@@ -20,7 +19,7 @@ namespace introduction.Declarative
 
             var montantTotal = CalculerMontantPanier(GetArticleFromDatabaseMock)(ligneArticles);
     
-            Assert.Equal(montantTotal, 60232);
+            Assert.AreEqual(montantTotal, 60232);
         }
         
         public Func<ImmutableList<PanierLigneArticle>, int> CalculerMontantPanier(Func<string, ArticleDatabase> getArticleFromDatabase)

@@ -1,6 +1,6 @@
-﻿using introduction.OrientedObject.Infrastructure;
+﻿using Start.OrientedObject.Infrastructure;
 
-namespace introduction.OrientedObject
+namespace Start.OrientedObject
 {
     public class PanierOperation
     {

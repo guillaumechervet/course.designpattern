@@ -1,4 +1,4 @@
-﻿namespace introduction.OrientedObject.Domain
+﻿namespace Start.OrientedObject.Domain
 {
     public class LignePanier
     {

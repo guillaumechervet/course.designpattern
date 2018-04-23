@@ -1,12 +1,30 @@
 #define MYTEST
 
 using System;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace introduction.Imperative
+namespace Start.Imperative
 {
+    [TestClass]
     public class ImperativeProgrammingTest
     {
+
+        [TestMethod]
+        public void test()
+        {
+            // Récépérer article depuis base de données
+            var ligneArticles = new[]
+            {
+                new PanierLigneArticle {Id = "1", Number = 12},
+                new PanierLigneArticle {Id = "2", Number = 1},
+                new PanierLigneArticle {Id = "3", Number = 4}
+            };
+
+            var montantTotal = CalculerMontantPanier(ligneArticles);
+
+            Assert.AreEqual(montantTotal, 60236);
+        }
+
         public decimal CalculerMontantPanier(PanierLigneArticle[] panierLigneArticles)
         {
             var montantTotal = 0;
@@ -33,7 +51,7 @@ namespace introduction.Imperative
 
         public ArticleDatabase GetArticleFromDatabase(string id)
         {
-#if MYTEST
+            #if MYTEST
             switch (id)
             {
                 case "1":
@@ -52,26 +70,11 @@ namespace introduction.Imperative
                 default:
                     throw new NotImplementedException();
             }
-#else
-// TODO request a real database
+            #else
+            // TODO request a real database
             throw new NotImplementedException();
             #endif
         }
 
-        [Fact]
-        public void test()
-        {
-            // Récépérer article depuis base de données
-            var ligneArticles = new[]
-            {
-                new PanierLigneArticle {Id = "1", Number = 12},
-                new PanierLigneArticle {Id = "2", Number = 1},
-                new PanierLigneArticle {Id = "3", Number = 4}
-            };
-
-            var montantTotal = CalculerMontantPanier(ligneArticles);
-
-            Assert.Equal(montantTotal, 60232);
-        }
     }
 }

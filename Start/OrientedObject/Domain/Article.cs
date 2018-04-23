@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace introduction.OrientedObject.Domain
+namespace Start.OrientedObject.Domain
 {
     public class Article
     {
@@ -12,7 +12,6 @@ namespace introduction.OrientedObject.Domain
         }
 
         public int Price { get; }
-
         public string Id { get; }
         public string Category { get; }
 
@@ -20,11 +19,11 @@ namespace introduction.OrientedObject.Domain
         {
             switch (Category)
             {
-                case "banana":
+                case "food":
                     return Price * 100 + Price * 12;
-                case "frigo":
+                case "electronic":
                     return Price * 100 + Price * 20 + 4;
-                case "chaise":
+                case "desktop":
                     return Price * 100 + Price * 20;
                 default:
                     throw new NotImplementedException();

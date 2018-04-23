@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace introduction.OrientedObject.Domain
+namespace Start.OrientedObject.Domain
 {
     public class Panier
     {
@@ -14,7 +14,10 @@ namespace introduction.OrientedObject.Domain
         public int CalculerMontant()
         {
             var montantTotal = 0;
-            foreach (var lignePanier in _lignePaniers) montantTotal += lignePanier.Article.Price * lignePanier.Number;
+            foreach (var lignePanier in _lignePaniers)
+            {
+                montantTotal += lignePanier.Article.CalculerMontant() * lignePanier.Number;
+            }
 
             return montantTotal;
         }

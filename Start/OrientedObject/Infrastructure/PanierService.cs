@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using introduction.OrientedObject.Domain;
+using Start.OrientedObject.Domain;
 
-namespace introduction.OrientedObject.Infrastructure
+namespace Start.OrientedObject.Infrastructure
 {
     public class PanierService
     {

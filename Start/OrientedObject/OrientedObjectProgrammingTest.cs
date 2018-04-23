@@ -1,11 +1,12 @@
-using introduction.OrientedObject.Infrastructure;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Start.OrientedObject.Infrastructure;
 
-namespace introduction.OrientedObject
+namespace Start.OrientedObject
 {
+    [TestClass]
     public class OrientedObjectTest
     {
-        [Fact]
+        [TestMethod]
         public void test()
         {
             // Récépérer article depuis base de données
@@ -19,7 +20,7 @@ namespace introduction.OrientedObject
             var panierOperation = new PanierOperation(new PanierService(new DatabaseMock()));
             var montantTotal = panierOperation.CalculerMontant(ligneArticles);
 
-            Assert.Equal(montantTotal, 60232);
+            Assert.AreEqual(61828, montantTotal);
         }
     }
 }
