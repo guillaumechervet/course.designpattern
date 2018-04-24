@@ -2,21 +2,21 @@
 
 namespace Start.OrientedObject.Domain
 {
-    public class Panier
+    public class Basket
     {
-        private readonly IList<LignePanier> _lignePaniers;
+        private readonly IList<BasketLine> _lignePaniers;
 
-        public Panier(IList<LignePanier> lignePaniers)
+        public Basket(IList<BasketLine> lignePaniers)
         {
             _lignePaniers = lignePaniers;
         }
 
-        public int CalculerMontant()
+        public int CalculateAmount()
         {
             var montantTotal = 0;
             foreach (var lignePanier in _lignePaniers)
             {
-                montantTotal += lignePanier.Article.CalculerMontant() * lignePanier.Number;
+                montantTotal += lignePanier.Article.CalculateAmout() * lignePanier.Number;
             }
 
             return montantTotal;

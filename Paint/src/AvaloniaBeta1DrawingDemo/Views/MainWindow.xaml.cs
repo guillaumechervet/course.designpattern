@@ -5,6 +5,7 @@ using Avalonia.Media;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Avalonia.Controls.Shapes;
 using AvaloniaBeta1DrawingDemo.Models;
 using Shape = Avalonia.Controls.Shapes.Shape;
 
@@ -58,8 +59,9 @@ namespace AvaloniaBeta1DrawingDemo.Views
 
         private void DrawingCanvas_PointerMoved(object sender, Avalonia.Input.PointerEventArgs e)
         {
-            var shape = (Square) drawingCanvas.Children[0];
-            shape.Move(e.GetPosition(this.drawingCanvas));
+            var shape = (Rectangle) drawingCanvas.Children[0];
+            Canvas.SetTop(shape, e.GetPosition(this.drawingCanvas).X);
+            Canvas.SetLeft(shape, e.GetPosition(this.drawingCanvas).Y);
 
             //Console.WriteLine("e" + e.GetPosition(this.drawingCanvas).X);
         }

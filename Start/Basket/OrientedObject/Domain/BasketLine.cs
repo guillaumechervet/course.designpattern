@@ -1,8 +1,8 @@
 ﻿namespace Start.OrientedObject.Domain
 {
-    public class LignePanier
+    public class BasketLine
     {
-        public LignePanier(Article article, int number)
+        public BasketLine(Article article, int number)
         {
             Article = article;
             Number = number;

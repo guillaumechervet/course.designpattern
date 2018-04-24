@@ -15,7 +15,7 @@ namespace Start.OrientedObject.Domain
         public string Id { get; }
         public string Category { get; }
 
-        public int CalculerMontant()
+        public int CalculateAmout()
         {
             switch (Category)
             {
