@@ -1,4 +1,4 @@
-﻿namespace Start.OrientedObject.Infrastructure
+﻿namespace Start.Basket.OrientedObject.Infrastructure
 {
     public interface IDatabase
     {

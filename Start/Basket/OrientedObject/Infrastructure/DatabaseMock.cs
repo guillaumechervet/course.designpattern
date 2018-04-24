@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Start.OrientedObject.Infrastructure
+namespace Start.Basket.OrientedObject.Infrastructure
 {
     public class DatabaseMock : IDatabase
     {
