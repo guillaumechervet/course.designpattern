@@ -1,7 +1,6 @@
-
 using System;
 
-namespace Start.Imperative
+namespace Start.Basket.Imperative
 {
     public class ImperativeProgramming
     {

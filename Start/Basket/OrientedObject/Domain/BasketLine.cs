@@ -1,4 +1,4 @@
-﻿namespace Start.OrientedObject.Domain
+﻿namespace Start.Basket.OrientedObject.Domain
 {
     public class BasketLine
     {

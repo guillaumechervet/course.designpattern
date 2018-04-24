@@ -1,4 +1,4 @@
-namespace Start
+namespace Start.Basket
 {
     public struct ArticleDatabase
     {

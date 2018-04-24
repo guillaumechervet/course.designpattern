@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Start.Basket.OrientedObject.Domain;
-using Start.OrientedObject.Domain;
-using Start.OrientedObject.Infrastructure;
 
 namespace Start.Basket.OrientedObject.Infrastructure
 {
@@ -14,7 +12,7 @@ namespace Start.Basket.OrientedObject.Infrastructure
             _database = database;
         }
 
-        public Start.OrientedObject.Domain.Basket GetBasket(BasketLineArticle[] basketLineArticles)
+        public Domain.Basket GetBasket(BasketLineArticle[] basketLineArticles)
         {
             var basketLines = new List<BasketLine>();
             foreach (var basketLineArticle in basketLineArticles)
@@ -24,7 +22,7 @@ namespace Start.Basket.OrientedObject.Infrastructure
                 basketLines.Add(new BasketLine(article, basketLineArticle.Number));
             }
 
-            return new Start.OrientedObject.Domain.Basket(basketLines);
+            return new Domain.Basket(basketLines);
         }
     }
 }
