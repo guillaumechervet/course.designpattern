@@ -4,22 +4,22 @@ namespace Start.Basket.OrientedObject.Domain
 {
     public class Basket
     {
-        private readonly IList<BasketLine> _lignePaniers;
+        private readonly IList<BasketLine> _basketLines;
 
-        public Basket(IList<BasketLine> lignePaniers)
+        public Basket(IList<BasketLine> basketLiens)
         {
-            _lignePaniers = lignePaniers;
+            _basketLines = basketLiens;
         }
 
         public int CalculateAmount()
         {
-            var montantTotal = 0;
-            foreach (var lignePanier in _lignePaniers)
+            var totalAmount = 0;
+            foreach (var basketLine in _basketLines)
             {
-                montantTotal += lignePanier.Article.CalculateAmout() * lignePanier.Number;
+                totalAmount += basketLine.CalculateAmout();
             }
 
-            return montantTotal;
+            return totalAmount;
         }
     }
 }

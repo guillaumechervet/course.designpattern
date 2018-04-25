@@ -8,7 +8,13 @@
             Number = number;
         }
 
-        public Article Article { get; set; }
-        public int Number { get; set; }
+        public Article Article { get; internal set; }
+        public int Number { get; internal set; }
+
+        public int CalculateAmount()
+        {
+            return  Article.CalculateAmout() * basketLine.Number;
+        }
+
     }
 }
