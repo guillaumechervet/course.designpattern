@@ -5,7 +5,7 @@ namespace Start.Basket.Imperative
     public class ImperativeProgramming
     {
 
-        public static decimal CalculateBasketAmount(BasketLineArticle[] basketLineArticles)
+        public static decimal CalculateBasketAmount(BasketLineArticle[] basketLineArticles, string userId)
         {
             var totalAmount = 0;
             for (var i = 0; i < basketLineArticles.Length; i++)
@@ -46,6 +46,17 @@ namespace Start.Basket.Imperative
                     };
                 case "3":
                     return new ArticleDatabase {Id = "1", Price = 1, Stock = 68, Type = "chaise", Category = "desktop"};
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
+         public static ArticleDatabase GetUserFromDatabase(string id)
+        {
+            switch (id)
+            {
+                case "1":
+                    return new UserDatabase {Id = "1", FirstName="Guillaume", BirthDate= new DateTime(1983, 31, 8)};
                 default:
                     throw new NotImplementedException();
             }
