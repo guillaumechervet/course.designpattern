@@ -13,7 +13,7 @@
 
         public int CalculateAmount()
         {
-            return  Article.CalculateAmout() * basketLine.Number;
+            return  Article.CalculateAmout() * Number;
         }
 
     }

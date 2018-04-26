@@ -1,31 +1,31 @@
 using System;
+using System.Collections.Generic;
 
 namespace Start.Basket.Imperative
 {
     public class ImperativeProgramming
     {
 
-        public static decimal CalculateBasketAmount(BasketLineArticle[] basketLineArticles, string userId)
+        public static decimal CalculateBasketAmount(IList<BasketLineArticle> basketLineArticles)
         {
             var totalAmount = 0;
-            for (var i = 0; i < basketLineArticles.Length; i++)
+            foreach (var basketLineArticle in basketLineArticles)
             {
-                var lineArticle = basketLineArticles[i];
-                var article = GetArticleFromDatabase(lineArticle.Id);
+                var article = GetArticleFromDatabase(basketLineArticle.Id);
                 switch (article.Category)
                 {
                     case "food":
-                        totalAmount += article.Price * 100 + article.Price * 12;
+                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 12;
                         break;
                     case "electronic":
-                        totalAmount += article.Price * 100 + article.Price * 20 + 4;
+                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 20 + 4;
                         break;
                     case "desktop":
-                        totalAmount += article.Price * 100 + article.Price * 20;
+                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 20;
                         break;
                 }
             }
-
+            
             return totalAmount;
         }
 
@@ -51,7 +51,7 @@ namespace Start.Basket.Imperative
             }
         }
 
-         public static ArticleDatabase GetUserFromDatabase(string id)
+        /*public static UserDatabase GetUserFromDatabase(string id)
         {
             switch (id)
             {
@@ -60,7 +60,7 @@ namespace Start.Basket.Imperative
                 default:
                     throw new NotImplementedException();
             }
-        }
+        }*/
 
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace Start.Basket
 {
     public struct UserDatabase

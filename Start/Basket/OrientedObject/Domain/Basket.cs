@@ -16,7 +16,7 @@ namespace Start.Basket.OrientedObject.Domain
             var totalAmount = 0;
             foreach (var basketLine in _basketLines)
             {
-                totalAmount += basketLine.CalculateAmout();
+                totalAmount += basketLine.CalculateAmount();
             }
 
             return totalAmount;
