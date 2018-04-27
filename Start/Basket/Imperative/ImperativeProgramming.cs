@@ -12,20 +12,21 @@ namespace Start.Basket.Imperative
             foreach (var basketLineArticle in basketLineArticles)
             {
                 var article = GetArticleFromDatabase(basketLineArticle.Id);
+                var amount = 0;
                 switch (article.Category)
                 {
                     case "food":
-                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 12;
+                        amount += article.Price * 100 + article.Price * 12;
                         break;
                     case "electronic":
-                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 20 + 4;
+                        amount += article.Price * 100 + article.Price * 20 + 4;
                         break;
                     case "desktop":
-                        totalAmount += article.Price * basketLineArticle.Number * 100 + article.Price * basketLineArticle.Number * 20;
+                        amount += article.Price * 100 + article.Price * 20;
                         break;
                 }
+                totalAmount += amount * basketLineArticle.Number;
             }
-            
             return totalAmount;
         }
 
