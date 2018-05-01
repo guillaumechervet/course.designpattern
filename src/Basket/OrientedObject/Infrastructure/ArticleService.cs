@@ -7,9 +7,9 @@ namespace Start.Basket.OrientedObject.Infrastructure
 {
     public class ArticleService
     {
-        private readonly IArticleDatabase _articleDatabase;
+        private readonly IDatabase _articleDatabase;
 
-        public ArticleService(IArticleDatabase articleDatabase)
+        public ArticleService(IDatabase articleDatabase)
         {
             _articleDatabase = articleDatabase;
         }

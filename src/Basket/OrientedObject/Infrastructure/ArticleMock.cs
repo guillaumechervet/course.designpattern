@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Start.Basket.OrientedObject.Infrastructure
 {
-    public class ArticleMock : IArticleDatabase
+    public class ArticleMock : IDatabase
     {
 
         public Basket.ArticleDatabase GetArticle(string id)

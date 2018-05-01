@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using Start.Basket;
 using Start.Basket.Imperative;
 
@@ -42,16 +46,46 @@ namespace BasketTest
         }
 
         [TestMethod]
-        [DynamicData("ReusableTestDataProperty")]
+        [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
             var amountTotal = ImperativeProgramming.CalculateBasketAmount(basketTest.BasketLineArticles);
-           
+            
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
         }
+
+        /*  private static string GetAssemblyDirectory()
+         {
+             var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+             var uri = new UriBuilder(codeBase);
+             var path = Uri.UnescapeDataString(uri.Path);
+             return Path.GetDirectoryName(path);
+         }
+
+         public static string Load(string localPath)
+         {
+             var jsonPath = Path.Combine(GetAssemblyDirectory(), localPath);
+             return File.ReadAllText(jsonPath);
+         }
+
+        [TestMethod]
+         public void GenerateDababase()
+         {
+             var article1 = ImperativeProgramming.GetArticleFromDatabaseMock("1");
+             var article2 = ImperativeProgramming.GetArticleFromDatabaseMock("2");
+             var article3 = ImperativeProgramming.GetArticleFromDatabaseMock("3");
+
+             var list = new List<ArticleDatabase>();
+             list.Add(article1);
+             list.Add(article2);
+             list.Add(article3);
+
+             File.WriteAllText(Path.Combine(GetAssemblyDirectory(), "article-database.json"), JsonConvert.SerializeObject(list, Formatting.Indented));
+         }*/
+
     }
 
 
-    
+
 
 }

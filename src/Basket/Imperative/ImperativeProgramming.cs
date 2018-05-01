@@ -1,5 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Start.Basket.Imperative
 {
@@ -11,7 +16,14 @@ namespace Start.Basket.Imperative
             var totalAmount = 0;
             foreach (var basketLineArticle in basketLineArticles)
             {
-                var article = GetArticleFromDatabase(basketLineArticle.Id);
+                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                var uri = new UriBuilder(codeBase);
+                var path = Uri.UnescapeDataString(uri.Path);
+                var assemblyDirectory = Path.GetDirectoryName(path);
+                var jsonPath = Path.Combine(assemblyDirectory, "article-database.json");
+                IList<ArticleDatabase> articleDatabases = JsonConvert.DeserializeObject<List<ArticleDatabase>>(File.ReadAllText(jsonPath));
+                var article = articleDatabases.First(articleDatabase => articleDatabase.Id == basketLineArticle.Id);
+
                 var amount = 0;
                 switch (article.Category)
                 {
@@ -30,7 +42,7 @@ namespace Start.Basket.Imperative
             return totalAmount;
         }
 
-        public static ArticleDatabase GetArticleFromDatabase(string id)
+        public static ArticleDatabase GetArticleFromDatabaseMock(string id)
         {
             switch (id)
             {
