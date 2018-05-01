@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Start.Basket;
 using Start.Basket.Imperative;
 
-namespace Start.Basket
+namespace BasketTest
 {
 
     [TestClass]
@@ -13,7 +14,6 @@ namespace Start.Basket
             public List<BasketLineArticle> BasketLineArticles { get; set; }
             public int ExpectedPrice { get; set; }
         }
-
 
         private static IEnumerable<object[]> ReusableTestDataProperty
         {
@@ -40,7 +40,6 @@ namespace Start.Basket
                        };
             }
         }
-
 
         [TestMethod]
         [DynamicData("ReusableTestDataProperty")]

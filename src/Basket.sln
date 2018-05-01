@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasketTest", "BasketTest\BasketTest.csproj", "{4A21A4C7-80BC-4CBA-B789-EE42B36EBC8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket", "Basket\Basket.csproj", "{FBE8AD66-E52E-4E2B-8374-C95D2E4876C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A21A4C7-80BC-4CBA-B789-EE42B36EBC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A21A4C7-80BC-4CBA-B789-EE42B36EBC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A21A4C7-80BC-4CBA-B789-EE42B36EBC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A21A4C7-80BC-4CBA-B789-EE42B36EBC8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBE8AD66-E52E-4E2B-8374-C95D2E4876C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBE8AD66-E52E-4E2B-8374-C95D2E4876C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBE8AD66-E52E-4E2B-8374-C95D2E4876C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBE8AD66-E52E-4E2B-8374-C95D2E4876C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {634E33B9-D690-4D2B-8402-ABF260E2398C}
+	EndGlobalSection
+EndGlobal
