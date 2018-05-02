@@ -1,6 +1,8 @@
-﻿using Start.Basket.OrientedObject.Infrastructure;
+﻿using System;
+using System.Collections.Generic;
+using Basket.OrientedObject.Infrastructure;
 
-namespace Start.Basket.OrientedObject
+namespace Basket.OrientedObject
 {
     public class BasketOperation
     {
@@ -11,10 +13,16 @@ namespace Start.Basket.OrientedObject
             _basketService = basketService;
         }
 
-        public int CalculateAmout(BasketLineArticle[] basketLineArticles)
+        public int CalculateAmout(IList<BasketLineArticle>  basketLineArticles)
         {
             var basket = _basketService.GetBasket(basketLineArticles);
             return basket.CalculateAmount();
         }
+
+        public int GetAmout(string articleId)
+        {
+          throw new NotImplementedException();
+        }
+
     }
 }

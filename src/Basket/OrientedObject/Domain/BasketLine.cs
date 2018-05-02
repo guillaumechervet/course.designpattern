@@ -1,4 +1,4 @@
-﻿namespace Start.Basket.OrientedObject.Domain
+﻿namespace Basket.OrientedObject.Domain
 {
     public class BasketLine
     {
@@ -13,7 +13,7 @@
 
         public int CalculateAmount()
         {
-            return  Article.CalculateAmout() * Number;
+            return Article.CalculateAmout() * Number;
         }
 
     }

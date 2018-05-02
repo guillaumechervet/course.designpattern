@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Start.Basket.OrientedObject.Domain
+namespace Basket.OrientedObject.Domain
 {
     public class Article
     {
@@ -25,6 +25,8 @@ namespace Start.Basket.OrientedObject.Domain
                     return Price * 100 + Price * 20 + 4;
                 case "desktop":
                     return Price * 100 + Price * 20;
+                case "toy":
+                    return Price * 100 - Price * 20 + Price * 19;
                 default:
                     throw new NotImplementedException();
             }

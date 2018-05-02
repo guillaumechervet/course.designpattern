@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Start.Basket.OrientedObject.Domain
+namespace Basket.OrientedObject.Domain
 {
     public class Basket
     {

@@ -1,28 +1,25 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace Start.Basket.Imperative
+namespace Basket.Imperative
 {
     public class ImperativeProgramming
     {
 
         public static decimal CalculateBasketAmount(IList<BasketLineArticle> basketLineArticles)
         {
-            var totalAmount = 0;
+            var amountTotal = 0;
             foreach (var basketLineArticle in basketLineArticles)
             {
-                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                var uri = new UriBuilder(codeBase);
-                var path = Uri.UnescapeDataString(uri.Path);
-                var assemblyDirectory = Path.GetDirectoryName(path);
-                var jsonPath = Path.Combine(assemblyDirectory, "article-database.json");
-                IList<ArticleDatabase> articleDatabases = JsonConvert.DeserializeObject<List<ArticleDatabase>>(File.ReadAllText(jsonPath));
-                var article = articleDatabases.First(articleDatabase => articleDatabase.Id == basketLineArticle.Id);
+#if DEBUG
+                var article = GetArticleDatabaseMock(basketLineArticle.Id);
+#else
+                var article = GetArticleDatabase(basketLineArticle.Id);
+#endif
 
                 var amount = 0;
                 switch (article.Category)
@@ -37,12 +34,25 @@ namespace Start.Basket.Imperative
                         amount += article.Price * 100 + article.Price * 20;
                         break;
                 }
-                totalAmount += amount * basketLineArticle.Number;
+                amountTotal += amount * basketLineArticle.Number;
             }
-            return totalAmount;
+            return amountTotal;
         }
 
-        public static ArticleDatabase GetArticleFromDatabaseMock(string id)
+        private static ArticleDatabase GetArticleDatabase(string id)
+        {
+            var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            var uri = new UriBuilder(codeBase);
+            var path = Uri.UnescapeDataString(uri.Path);
+            var assemblyDirectory = Path.GetDirectoryName(path);
+            var jsonPath = Path.Combine(assemblyDirectory, "article-articleDatabase.json");
+            IList<ArticleDatabase> articleDatabases =
+                JsonConvert.DeserializeObject<List<ArticleDatabase>>(File.ReadAllText(jsonPath));
+            var article = articleDatabases.First(articleDatabase => articleDatabase.Id == id);
+            return article;
+        }
+
+        public static ArticleDatabase GetArticleDatabaseMock(string id)
         {
             switch (id)
             {

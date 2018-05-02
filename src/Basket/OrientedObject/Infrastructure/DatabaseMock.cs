@@ -1,9 +1,8 @@
 ﻿using System;
-using Start.Basket.OrientedObject.Domain;
 
-namespace Start.Basket.OrientedObject.Infrastructure
+namespace Basket.OrientedObject.Infrastructure
 {
-    public class DatabaseMock : IDatabase
+    public class ArticleDatabaseMock : IArticleDatabase
     {
         public ArticleDatabase GetArticle(string id)
         {
