@@ -1,14 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using Basket;
-using Basket.Imperative;
 using Basket.OrientedObject;
 using Basket.OrientedObject.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 
 namespace BasketTest
 {
@@ -59,8 +53,9 @@ namespace BasketTest
         [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
-            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory());
-            var basketOperation = new BasketOperation(basKetService);
+            var logger = new LoggerMock();
+            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory(), logger);
+            var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
         }
@@ -68,9 +63,10 @@ namespace BasketTest
         [TestMethod]
         public void ReturnCorrectAmoutGivenBasketLine()
         {
+            var logger = new LoggerMock();
             var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
-            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory());
-            var basketOperation = new BasketOperation(basKetService);
+            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory(), logger);
+            var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
             Assert.AreEqual(amountTotal, 6552);
         }

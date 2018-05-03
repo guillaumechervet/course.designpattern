@@ -9,11 +9,13 @@ namespace Basket.OrientedObject.Infrastructure
     {
         private readonly IArticleDatabase _articleDatabase;
         private readonly ArticleFactory _articleFactory;
+        private readonly ILogger _logger;
 
-        public BasketService(IArticleDatabase articleDatabase, ArticleFactory articleFactory)
+        public BasketService(IArticleDatabase articleDatabase, ArticleFactory articleFactory, ILogger logger)
         {
             _articleDatabase = articleDatabase;
             _articleFactory = articleFactory;
+            _logger = logger;
         }
 
         public Domain.Basket GetBasket(IList<BasketLineArticle> basketLineArticles)
@@ -30,10 +32,18 @@ namespace Basket.OrientedObject.Infrastructure
 
         public BasketLine GetBasketLine(BasketLineArticle basketLineArticle)
         {
-            var articleDatabase = _articleDatabase.GetArticle(basketLineArticle.Id);
-            var article = _articleFactory.Create(articleDatabase);
-            var basketLine = new BasketLine(article, basketLineArticle.Number);
-            return basketLine;
+            try
+            {
+                var articleDatabase = _articleDatabase.GetArticle(basketLineArticle.Id);
+                var article = _articleFactory.Create(articleDatabase);
+                var basketLine = new BasketLine(article, basketLineArticle.Number);
+                return basketLine;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "problème lors de la récupération des données article");
+                throw ex;
+            }
         }
 
         
