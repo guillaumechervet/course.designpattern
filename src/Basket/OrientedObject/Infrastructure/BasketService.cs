@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Basket.OrientedObject.Domain;
 
 namespace Basket.OrientedObject.Infrastructure
@@ -19,7 +20,26 @@ namespace Basket.OrientedObject.Infrastructure
             foreach (var basketLineArticle in basketLineArticles)
             {
                 var articleDatabase = _articleDatabase.GetArticle(basketLineArticle.Id);
-                var article = new Article(articleDatabase.Id, articleDatabase.Price, articleDatabase.Category);
+
+                ArticleBase article;
+                switch (articleDatabase.Category)
+                {
+                    case "food":
+                        article = new ArticleFood(articleDatabase.Id, articleDatabase.Price);
+                        break;
+                    case "electronic":
+                        article = new ArticleElectronic(articleDatabase.Id, articleDatabase.Price);
+                        break;
+                    case "desktop":
+                        article = new ArticleDesktop(articleDatabase.Id, articleDatabase.Price);
+                        break;
+                    case "toy":
+                        article = new ArticleToy(articleDatabase.Id, articleDatabase.Price);
+                        break;
+                    default:
+                        throw new NotImplementedException();
+                }
+                
                 basketLines.Add(new BasketLine(article, basketLineArticle.Number));
             }
 

@@ -2,13 +2,13 @@
 {
     public class BasketLine
     {
-        public BasketLine(Article article, int number)
+        public BasketLine(ArticleBase article, int number)
         {
             Article = article;
             Number = number;
         }
 
-        public Article Article { get; internal set; }
+        public ArticleBase Article { get; internal set; }
         public int Number { get; internal set; }
 
         public int CalculateAmount()
