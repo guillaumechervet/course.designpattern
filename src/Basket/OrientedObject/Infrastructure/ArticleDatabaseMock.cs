@@ -2,7 +2,7 @@
 
 namespace Basket.OrientedObject.Infrastructure
 {
-    public class ArticleArticleDatabaseMock : IArticleDatabase
+    public class ArticleDatabaseMock : IArticleDatabase
     {
 
         public ArticleDatabase GetArticle(string id)

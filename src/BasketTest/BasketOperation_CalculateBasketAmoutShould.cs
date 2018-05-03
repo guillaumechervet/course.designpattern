@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Basket;
 using Basket.OrientedObject;
@@ -8,7 +9,7 @@ namespace BasketTest
 {
 
     [TestClass]
-    public class BasketService_CalculateBasketAmoutShould
+    public class BasketOperation_CalculateBasketAmoutShould
     {
         public class BasketTest
         {
@@ -54,7 +55,7 @@ namespace BasketTest
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
             var logger = new LoggerMock();
-            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory(), logger);
+            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
@@ -65,10 +66,28 @@ namespace BasketTest
         {
             var logger = new LoggerMock();
             var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
-            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory(), logger);
+            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
             Assert.AreEqual(amountTotal, 8640);
+        }
+
+        [TestMethod]
+        public void ThrowExeptionGivenUnavailableDatabase()
+        {
+            try
+            {
+                var logger = new LoggerMock();
+                var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
+                var basKetService = new BasketService(new ArticleDatabaseMockException(), new ArticleFactory(), logger);
+                var basketOperation = new BasketOperation(basKetService, logger);
+                var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
+                Assert.Fail();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 

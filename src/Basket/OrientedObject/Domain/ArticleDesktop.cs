@@ -13,7 +13,8 @@
 
         public override int CalculateAmout()
         {
-            return Price * 100 + Price * 20;
+            const int tva = 20;
+            return Price * 100 + Price * tva;
         }
     }
 }
