@@ -19,9 +19,10 @@ namespace Basket.OrientedObject
             return basket.CalculateAmount();
         }
 
-        public int GetAmout(string articleId)
+        public int CalculateAmout(BasketLineArticle basketLineArticle)
         {
-          throw new NotImplementedException();
+            var basket = _basketService.GetBasketLine(basketLineArticle);
+            return basket.CalculateAmount();
         }
 
     }

@@ -59,10 +59,20 @@ namespace BasketTest
         [DynamicData("Baskets")]
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
-            var basKetService = new BasketService(new ArticleArticleDatabaseMock());
+            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory());
             var basketOperation = new BasketOperation(basKetService);
             var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
+        }
+
+        [TestMethod]
+        public void ReturnCorrectAmoutGivenBasketLine()
+        {
+            var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
+            var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory());
+            var basketOperation = new BasketOperation(basKetService);
+            var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
+            Assert.AreEqual(amountTotal, 6552);
         }
     }
 

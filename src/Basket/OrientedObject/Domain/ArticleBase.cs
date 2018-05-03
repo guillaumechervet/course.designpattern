@@ -13,4 +13,5 @@
         public abstract string Category { get; }
         public abstract int CalculateAmout();
     }
+
 }
