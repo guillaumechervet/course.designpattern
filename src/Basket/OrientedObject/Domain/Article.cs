@@ -26,7 +26,8 @@ namespace Basket.OrientedObject.Domain
                 case "desktop":
                     return Price * 100 + Price * 20;
                 case "toy":
-                    return Price * 100 - Price * 20 + Price * 19;
+                    var newPrice = Price * 100 - Price * 30;
+                    return (newPrice * 100 + newPrice * 20) / 100;
                 default:
                     throw new NotImplementedException();
             }

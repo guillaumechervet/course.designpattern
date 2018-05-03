@@ -44,6 +44,13 @@ namespace BasketTest
                               },
                               ExpectedPrice = 37520}
                               },
+                           new object[] {
+                               new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                                   {
+                                       new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"},
+                                   },
+                                   ExpectedPrice = 6552}
+                           },
                        };
             }
         }
