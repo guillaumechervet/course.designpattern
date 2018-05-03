@@ -13,8 +13,8 @@
 
         public override int CalculateAmout()
         {
-            var newPrice = Price * 100 - Price * 30;
-            return (newPrice * 100 + newPrice * 20) / 100;
+            var newPrice = Price -3 ;
+            return newPrice * 100 + newPrice * 20;
         }
     }
 }

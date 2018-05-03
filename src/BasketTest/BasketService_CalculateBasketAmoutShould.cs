@@ -43,7 +43,7 @@ namespace BasketTest
                                    {
                                        new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"},
                                    },
-                                   ExpectedPrice = 6552}
+                                   ExpectedPrice = 8640}
                            },
                        };
             }
@@ -68,7 +68,7 @@ namespace BasketTest
             var basKetService = new BasketService(new ArticleArticleDatabaseMock(), new ArticleFactory(), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
-            Assert.AreEqual(amountTotal, 6552);
+            Assert.AreEqual(amountTotal, 8640);
         }
     }
 
