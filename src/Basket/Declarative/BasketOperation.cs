@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Immutable;
-using Basket;
 
-namespace Start.Basket.Declarative
+namespace Basket.Declarative
 {
     public class BasketOperation
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Basket;
-using Basket.OrientedObject;
 using Basket.OrientedObject.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using BasketOperation = Basket.OrientedObject.BasketOperation;
 
 namespace BasketTest
 {
