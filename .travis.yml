@@ -6,4 +6,4 @@ install:
   - dotnet restore ./src/Basket.sln
 script:
   - dotnet build ./src/Basket.sln
-  - dotnet test ./src/BasketTest/
+  - dotnet test ./src/BasketTest/BasketTest.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
