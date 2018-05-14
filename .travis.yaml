@@ -1,0 +1,6 @@
+language: csharp
+solution: ./src/Basket.sln
+mono: none
+dotnet: 2.0.0
+install:
+  - nuget restore ./src/Basket.sln
