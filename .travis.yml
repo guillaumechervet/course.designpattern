@@ -6,3 +6,4 @@ dotnet: 2.0.0
 install:
   - dotnet restore ./src/Basket.sln
   - dotnet build ./src/Basket.sln
+  - dotnet test ./src/BasketTest/
