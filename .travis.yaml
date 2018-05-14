@@ -1,4 +1,4 @@
 language: csharp
 solution: Basket.sln
 install:
-  - nuget restore Basket.sln
+  - nuget restore ./src/Basket.sln
