@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Basket.Imperative
 {
-    public class ImperativeProgramming
+    public class ImperativeBasketOperation
     {
 
         public static decimal CalculateBasketAmount(IList<BasketLineArticle> basketLineArticles)
