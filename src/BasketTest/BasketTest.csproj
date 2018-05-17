@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Basket\Basket.csproj" />
+    <ProjectReference Include="..\BasketTest\BasketTest.csproj" />
   </ItemGroup>
 
   <ItemGroup>
