@@ -20,7 +20,7 @@ namespace Basket.OrientedObject.Infrastructure
 
         public Domain.Basket GetBasket(IList<BasketLineArticle> basketLineArticles)
         {
-            var basketLines = new List<BasketLine>();
+            var basketLines = new List<BasketLineBase>();
             foreach (var basketLineArticle in basketLineArticles)
             {
                 var basketLine = GetBasketLine(basketLineArticle);
@@ -30,13 +30,24 @@ namespace Basket.OrientedObject.Infrastructure
             return new Domain.Basket(basketLines);
         }
 
-        public BasketLine GetBasketLine(BasketLineArticle basketLineArticle)
+        public BasketLineBase GetBasketLine(BasketLineArticle basketLineArticle)
         {
             try
             {
                 var articleDatabase = _articleDatabase.GetArticle(basketLineArticle.Id);
                 var article = _articleFactory.Create(articleDatabase);
-                var basketLine = new BasketLine(article, basketLineArticle.Number);
+                BasketLineBase basketLine; 
+
+                switch (articleDatabase.Category)
+                {
+                    case "food":
+                        basketLine = new BasketLineFood(article, basketLineArticle.Number);
+                        break;
+                    default:
+                        basketLine = new BasketLine(article, basketLineArticle.Number);
+                        break;
+                }
+               
                 return basketLine;
             }
             catch (Exception ex)

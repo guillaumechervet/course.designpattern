@@ -2,14 +2,15 @@
 {
     public class ArticleToy : ArticleBase
     {
-        public ArticleToy(string id, int price) : base(id, price)
+        public ArticleToy(string id, int price, int stock) : base(id, price, stock)
         {
         }
 
         public override int CalculateAmout()
         {
             var newPrice = Price -3 ;
-            return newPrice * 100 + newPrice * 20;
+            var tva = 20;
+            return newPrice * 100 + newPrice * tva;
         }
     }
 }

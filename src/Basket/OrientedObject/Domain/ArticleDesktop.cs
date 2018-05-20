@@ -2,7 +2,7 @@
 {
     public class ArticleDesktop : ArticleBase
     {
-        public ArticleDesktop(string id, int price) : base(id, price)
+        public ArticleDesktop(string id, int price, int stock) : base(id, price, stock)
         {
         }
 

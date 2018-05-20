@@ -15,14 +15,14 @@ namespace Basket.OrientedObject
             _logger = logger;
         }
 
-        public int CalculateAmout(IList<BasketLineArticle>  basketLineArticles)
+        public int CalculateAmount(IList<BasketLineArticle>  basketLineArticles)
         {
             _logger.LogInformation("Appel total panier réalisé");
             var basket = _basketService.GetBasket(basketLineArticles);
             return basket.CalculateAmount();
         }
 
-        public int CalculateAmout(BasketLineArticle basketLineArticle)
+        public int CalculateAmount(BasketLineArticle basketLineArticle)
         {
             _logger.LogInformation("Appel total ligne panier réalisé");
             var basket = _basketService.GetBasketLine(basketLineArticle);

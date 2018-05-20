@@ -22,7 +22,22 @@ namespace BasketTest
             get
             {
                 return new[]
-                       {   new object[] {
+                       {
+                           new object[] {
+                               new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                                   {
+                                       new BasketLineArticle {Id = "1", Number = 21, Label = "Banana"},
+                                   },
+                                   ExpectedPrice = 2240}
+                           },
+                           new object[] {
+                               new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                                   {
+                                       new BasketLineArticle {Id = "1", Number = 43, Label = "Banana"},
+                                   },
+                                   ExpectedPrice = 4592}
+                           },
+                           new object[] {
                                new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
                                {
                                    new BasketLineArticle {Id = "1", Number = 12, Label = "Banana"},
@@ -57,7 +72,7 @@ namespace BasketTest
             var logger = new LoggerMock();
             var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
-            var amountTotal = basketOperation.CalculateAmout(basketTest.BasketLineArticles);
+            var amountTotal = basketOperation.CalculateAmount(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
         }
 
@@ -68,7 +83,7 @@ namespace BasketTest
             var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
             var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
-            var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
+            var amountTotal = basketOperation.CalculateAmount(basketLineArticle);
             Assert.AreEqual(amountTotal, 8640);
         }
 
@@ -81,13 +96,11 @@ namespace BasketTest
                 var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
                 var basKetService = new BasketService(new ArticleDatabaseMockException(), new ArticleFactory(), logger);
                 var basketOperation = new BasketOperation(basKetService, logger);
-                var amountTotal = basketOperation.CalculateAmout(basketLineArticle);
+                var amountTotal = basketOperation.CalculateAmount(basketLineArticle);
                 Assert.Fail();
             }
             catch (Exception ex)
-            {
-
-            }
+            {}
         }
     }
 

@@ -8,19 +8,22 @@ namespace Basket.OrientedObject.Infrastructure
         public ArticleBase Create(ArticleDatabase articleDatabase)
         {
             ArticleBase article;
+            var articleDatabaseStock = articleDatabase.Stock;
+            var articleDatabaseId = articleDatabase.Id;
+            var articleDatabasePrice = articleDatabase.Price;
             switch (articleDatabase.Category)
             {
                 case "food":
-                    article = new ArticleFood(articleDatabase.Id, articleDatabase.Price);
+                    article = new ArticleFood(articleDatabaseId, articleDatabasePrice, articleDatabaseStock);
                     break;
                 case "electronic":
-                    article = new ArticleElectronic(articleDatabase.Id, articleDatabase.Price);
+                    article = new ArticleElectronic(articleDatabaseId, articleDatabasePrice, articleDatabaseStock);
                     break;
                 case "desktop":
-                    article = new ArticleDesktop(articleDatabase.Id, articleDatabase.Price);
+                    article = new ArticleDesktop(articleDatabaseId, articleDatabasePrice, articleDatabaseStock);
                     break;
                 case "toy":
-                    article = new ArticleToy(articleDatabase.Id, articleDatabase.Price);
+                    article = new ArticleToy(articleDatabaseId, articleDatabasePrice, articleDatabaseStock);
                     break;
                 default:
                     throw new NotImplementedException();

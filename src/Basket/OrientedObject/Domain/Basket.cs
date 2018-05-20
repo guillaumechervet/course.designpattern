@@ -4,9 +4,9 @@ namespace Basket.OrientedObject.Domain
 {
     public class Basket
     {
-        private readonly IList<BasketLine> _basketLines;
+        private readonly IList<BasketLineBase> _basketLines;
 
-        public Basket(IList<BasketLine> basketLiens)
+        public Basket(IList<BasketLineBase> basketLiens)
         {
             _basketLines = basketLiens;
         }

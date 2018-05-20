@@ -1,20 +1,16 @@
 ﻿namespace Basket.OrientedObject.Domain
 {
-    public class BasketLine
+    public class BasketLine : BasketLineBase
     {
-        public BasketLine(ArticleBase article, int number)
+
+        public BasketLine(ArticleBase article, int number): base(article,number)
         {
-            Article = article;
-            Number = number;
+
         }
 
-        public ArticleBase Article { get; internal set; }
-        public int Number { get; internal set; }
-
-        public int CalculateAmount()
+        public override int CalculateAmount()
         {
             return Article.CalculateAmout() * Number;
         }
-
     }
 }
