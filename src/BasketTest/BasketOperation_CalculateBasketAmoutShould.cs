@@ -26,6 +26,13 @@ namespace BasketTest
                            new object[] {
                                new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
                                    {
+                                       new BasketLineArticle {Id = "4", Number = 10, Label = "Grumy"},
+                                   },
+                                   ExpectedPrice = 47200}
+                           },
+                           new object[] {
+                               new BasketTest(){ BasketLineArticles = new List<BasketLineArticle>
+                                   {
                                        new BasketLineArticle {Id = "1", Number = 21, Label = "Banana"},
                                    },
                                    ExpectedPrice = 2240}

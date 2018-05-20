@@ -43,6 +43,12 @@ namespace Basket.OrientedObject.Infrastructure
                     case "food":
                         basketLine = new BasketLineFood(article, basketLineArticle.Number);
                         break;
+                    case "toy":
+                        basketLine = new BasketLineToy(article, basketLineArticle.Number);
+                        break;
+                    case "desktop":
+                        basketLine = new BasketLineDesktop(article, basketLineArticle.Number);
+                        break;
                     default:
                         basketLine = new BasketLine(article, basketLineArticle.Number);
                         break;
