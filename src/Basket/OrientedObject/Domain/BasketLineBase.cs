@@ -10,6 +10,7 @@
 
         public ArticleBase Article { get; protected set; }
         public int Number { get; protected set; }
+        public int NumberFree { get; internal set; } = 0;
 
         public abstract int CalculateAmount();
     }
