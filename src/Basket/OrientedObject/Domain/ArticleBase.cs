@@ -10,7 +10,6 @@
 
         public int Price { get; }
         public string Id { get; }
-        public abstract string Category { get; }
         public abstract int CalculateAmout();
     }
 

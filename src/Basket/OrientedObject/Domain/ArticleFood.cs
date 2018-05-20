@@ -6,11 +6,6 @@
         {
         }
 
-        public override string Category
-        {
-            get { return "food"; }
-        }
-
         public override int CalculateAmout()
         {
            return Price * 100 + Price * 12;

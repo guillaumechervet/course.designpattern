@@ -6,11 +6,6 @@
         {
         }
 
-        public override string Category
-        {
-            get { return "desktop"; }
-        }
-
         public override int CalculateAmout()
         {
             const int tva = 20;

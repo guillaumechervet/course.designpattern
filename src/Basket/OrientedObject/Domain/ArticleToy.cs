@@ -6,11 +6,6 @@
         {
         }
 
-        public override string Category
-        {
-            get { return "toy"; }
-        }
-
         public override int CalculateAmout()
         {
             var newPrice = Price -3 ;
