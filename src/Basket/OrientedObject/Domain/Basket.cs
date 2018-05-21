@@ -19,7 +19,7 @@ namespace Basket.OrientedObject.Domain
             var basketLineDesktop = _basketLines.Where(bl => (bl is BasketLineDesktop)).Select(bl => (BasketLineDesktop) bl).FirstOrDefault();
             if (basketLineDesktop != null && basketLineDesktop.Number >= 7)
             {
-                var basketLineToy = _basketLines.Where(bl => (bl is BasketLineToy)).FirstOrDefault();
+                var basketLineToy = _basketLines.FirstOrDefault(bl => (bl is BasketLineToy));
                 basketLineToy.NumberFree += 1;
             }
 
