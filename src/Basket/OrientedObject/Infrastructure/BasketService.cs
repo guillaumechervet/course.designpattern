@@ -4,7 +4,6 @@ using Basket.OrientedObject.Domain;
 
 namespace Basket.OrientedObject.Infrastructure
 {
-
     public class BasketService
     {
         private readonly IArticleDatabase _articleDatabase;
@@ -36,24 +35,8 @@ namespace Basket.OrientedObject.Infrastructure
             {
                 var articleDatabase = _articleDatabase.GetArticle(basketLineArticle.Id);
                 var article = _articleFactory.Create(articleDatabase);
-                BasketLineBase basketLine; 
+                var basketLine = BasketLineFactory.Create(basketLineArticle, articleDatabase, article);
 
-                switch (articleDatabase.Category)
-                {
-                    case "food":
-                        basketLine = new BasketLineFood(article, basketLineArticle.Number);
-                        break;
-                    case "toy":
-                        basketLine = new BasketLineToy(article, basketLineArticle.Number);
-                        break;
-                    case "desktop":
-                        basketLine = new BasketLineDesktop(article, basketLineArticle.Number);
-                        break;
-                    default:
-                        basketLine = new BasketLine(article, basketLineArticle.Number);
-                        break;
-                }
-               
                 return basketLine;
             }
             catch (Exception ex)
@@ -62,7 +45,5 @@ namespace Basket.OrientedObject.Infrastructure
                 throw ex;
             }
         }
-
-        
     }
 }
