@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Basket.OrientedObject;
 using Basket.OrientedObject.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Basket.Api
 {
@@ -26,14 +23,19 @@ namespace Basket.Api
         {
             services.AddMvc();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My Basket", Version = "v1" });
+                c.IncludeXmlComments(
+                    $@"{AppDomain.CurrentDomain.BaseDirectory}\Basket.Api.xml");
+            });
+
             services.AddScoped<Basket.IDateTime, Basket.SystemDateTime>();
-            services.AddSingleton<IArticleDatabase, ArticleDatabaseJson>();
-            services.AddSingleton<ArticleFactory, ArticleFactory>();
-            services.AddSingleton<ILogger, LoggerExternal>();
-            services.AddSingleton<BasketService, BasketService>();
-
-            //IArticleDatabase articleDatabase, ArticleFactory articleFactory, ILogger logger
-
+            services.AddScoped<IArticleDatabase, ArticleDatabaseJson>();
+            services.AddScoped<ArticleFactory, ArticleFactory>();
+            services.AddScoped<ILogger, LoggerExternal>();
+            services.AddScoped<BasketService, BasketService>();
+            services.AddScoped<BasketOperation, BasketOperation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +45,9 @@ namespace Basket.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Basket"); });
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

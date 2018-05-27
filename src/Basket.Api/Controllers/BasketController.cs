@@ -22,7 +22,6 @@ namespace Basket.Api.Controllers
             public List<BasketLineArticle> BasketLineArticles { get; set; }
         }
 
-        // POST api/values
         [HttpPost]
         public int Post([FromBody]BasketModel basketModel)
         {

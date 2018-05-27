@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"> 
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .article {
+            width: calc(100% - 202px);
+            height: 400px;
+            padding: 0px;
+            margin: 0px;
+            border: 1px solid #607D8B;
+            text-align: center;
+        }
+
+        .basket {
+            width: 200px;
+            height: 400px;
+            padding: 0px;
+            margin: 0px;
+            border: 1px solid #607D8B;
+            text-align: center;
+            position: absolute;
+            top: 0px;
+            background-color: gainsboro;
+            right: 0px;
+            z-index: 20;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="module">
+        import MainContainer from './MainContainer.js';
+        var mainContainer = new MainContainer(document);
+        var main = document.getElementById("main");
+        main.addEventListener("mousemove", mainContainer.mouseMove);
+        main.addEventListener("mousedown", mainContainer.mouseDown);
+    </script>
+
+	<h1>[My Basket]</h1>
+
+	<p>Fullfill the basket and view the computed price!</p>
+
+	<div class="article" id="main">
+		<div style="background-color:coral; width:8px;height:8px;position:absolute;">
+		</div>
+	</div>
+
+	<div class="basket">
+		<h2>Basket</h2>
+		<span>Basket is empty</span>
+		<ul>
+			<li>3 Chair - 75€</li>
+			<li>1 Fridge - 450€</li>
+			<li>
+				<b>Total: 525€</b>
+			</li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

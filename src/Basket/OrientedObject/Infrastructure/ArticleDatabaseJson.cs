@@ -16,7 +16,7 @@ namespace Basket.OrientedObject.Infrastructure
             var uri = new UriBuilder(codeBase);
             var path = Uri.UnescapeDataString(uri.Path);
             var assemblyDirectory = Path.GetDirectoryName(path);
-            var jsonPath = Path.Combine(assemblyDirectory, "article-articleDatabase.json");
+            var jsonPath = Path.Combine(assemblyDirectory, "article-database.json");
             IList<ArticleDatabase> articleDatabases =
                 JsonConvert.DeserializeObject<List<ArticleDatabase>>(File.ReadAllText(jsonPath));
             var article = articleDatabases.First(articleDatabase => articleDatabase.Id == id);
