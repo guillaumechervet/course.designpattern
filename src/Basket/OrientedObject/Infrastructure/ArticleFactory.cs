@@ -5,9 +5,9 @@ namespace Basket.OrientedObject.Infrastructure
 {
     public class ArticleFactory
     {
-        private readonly DateTime _dateTime;
+        private readonly IDateTime _dateTime;
 
-        public ArticleFactory(DateTime dateTime)
+        public ArticleFactory(IDateTime dateTime)
         {
             _dateTime = dateTime;
         }
@@ -21,16 +21,16 @@ namespace Basket.OrientedObject.Infrastructure
             switch (articleDatabase.Category)
             {
                 case "food":
-                    article = new ArticleFood(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime);
+                    article = new ArticleFood(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime.Now);
                     break;
                 case "electronic":
-                    article = new ArticleElectronic(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime);
+                    article = new ArticleElectronic(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime.Now);
                     break;
                 case "desktop":
-                    article = new ArticleDesktop(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime);
+                    article = new ArticleDesktop(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime.Now);
                     break;
                 case "toy":
-                    article = new ArticleToy(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime);
+                    article = new ArticleToy(articleDatabaseId, articleDatabasePrice, articleDatabaseStock, _dateTime.Now);
                     break;
                 default:
                     throw new NotImplementedException();

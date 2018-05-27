@@ -112,7 +112,7 @@ namespace BasketTest
         public void ReturnCorrectAmoutGivenBasket(BasketTest basketTest)
         {
             var logger = new LoggerMock();
-            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(basketTest.DateTime), logger);
+            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(new MockDateTime(basketTest.DateTime)), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmount(basketTest.BasketLineArticles);
             Assert.AreEqual(amountTotal, basketTest.ExpectedPrice);
@@ -123,7 +123,7 @@ namespace BasketTest
         {
             var logger = new LoggerMock();
             var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
-            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(new DateTime(2018, 2, 1)), logger);
+            var basKetService = new BasketService(new ArticleDatabaseMock(), new ArticleFactory(new MockDateTime(new DateTime(2018, 2, 1))), logger);
             var basketOperation = new BasketOperation(basKetService, logger);
             var amountTotal = basketOperation.CalculateAmount(basketLineArticle);
             Assert.AreEqual(amountTotal, 8640);
@@ -136,7 +136,7 @@ namespace BasketTest
             {
                 var logger = new LoggerMock();
                 var basketLineArticle = new BasketLineArticle {Id = "4", Number = 2, Label = "Grumy"};
-                var basKetService = new BasketService(new ArticleDatabaseMockException(), new ArticleFactory(new DateTime(2018, 2, 1)), logger);
+                var basKetService = new BasketService(new ArticleDatabaseMockException(), new ArticleFactory(new MockDateTime(new DateTime(2018, 2, 1))), logger);
                 var basketOperation = new BasketOperation(basKetService, logger);
                 var amountTotal = basketOperation.CalculateAmount(basketLineArticle);
                 Assert.Fail();

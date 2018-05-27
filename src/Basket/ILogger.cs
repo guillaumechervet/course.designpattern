@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Basket.OrientedObject.Infrastructure
+namespace Basket
 {
     public interface ILogger
     {
