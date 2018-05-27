@@ -3,7 +3,7 @@ import Basket from './Basket.js';
 
 export default class MainContainer {
     constructor(document) {
-        this.document = document;
+        this.container = document.getElementById("main");
         this.mouseDown = this.mouseDown.bind(this);
         this.mouseMove = this.mouseMove.bind(this);
         this.items = [];
@@ -37,8 +37,6 @@ export default class MainContainer {
 
             for (let element of this.items) {
                 if (element.isHover({ x: cX, y: cY })) {
-                    element.mouseSelectedPosition.x = cX;
-                    element.mouseSelectedPosition.y = cY;
                     element.setSelected({ x: cX, y: cY });
                     break;
                 }
@@ -48,7 +46,7 @@ export default class MainContainer {
     }
 
     mouseMove(event) {
-        const container = this.document.getElementById("main");
+        const container = this.container;
         const offsets = container.getBoundingClientRect();
         const cX = event.clientX;
         const cY = event.clientY;
@@ -72,8 +70,6 @@ export default class MainContainer {
             let hasHover = false;
             for (let element of this.items) {
                 if (element.isHover({ x: cX, y: cY })) {
-                    element.mouseSelectedPosition.x = cX;
-                    element.mouseSelectedPosition.y = cY;
                     container.style.cursor = "pointer";
                     hasHover = true;
                     break;
