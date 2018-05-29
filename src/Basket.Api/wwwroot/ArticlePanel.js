@@ -28,7 +28,7 @@ export default class ArticlePanel {
                 if (index > -1) {
                     this.items.splice(index, 1);
                     this.removeChild(selectedArticle);
-                    this.basketPanel.add({ Id: "1", Number: 2, Label: "Fridge" });
+                    this.basketPanel.add({ id: selectedArticle.id, label: selectedArticle.label });
                 }
             }
         }

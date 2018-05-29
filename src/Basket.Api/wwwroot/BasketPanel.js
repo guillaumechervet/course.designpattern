@@ -11,11 +11,11 @@ export default class BasketPanel {
         this.total = 0;
     }
     add(article) {
-        const currentArticle = this.data.BasketLineArticles.find(function (element) { return element.Id === article.Id; });
+        const currentArticle = this.data.BasketLineArticles.find(function (element) { return element.Id === article.id; });
         if (currentArticle) {
             currentArticle.Number++;
         } else {
-            this.data.BasketLineArticles.push({ Id: article.Id, Number: 1, Label: article.Label })
+            this.data.BasketLineArticles.push({ Id: article.id, Number: 1, Label: article.label })
         }
 
         fetch('/api/basket', {

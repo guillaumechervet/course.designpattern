@@ -1,6 +1,23 @@
 
 import Component from "./Component.js";
 
+export const isHoverFunc = (getBoundingClientRect, size) => (point) => {
+        const offsets = getBoundingClientRect();
+        const x = offsets.left;
+        const y = offsets.top;
+        const width = size.width;
+        const height = size.height;
+
+        var isX = false;
+        if (x < point.x && point.x < (x + width)) {
+            isX = true;
+        }
+        var isY = false;
+        if (y < point.y && point.y < (y + height)) {
+            isY = true;
+        }
+        return isX && isY;
+}
 
 export default class BasketComponent extends Component {
 
@@ -21,21 +38,8 @@ export default class BasketComponent extends Component {
         this.size = size;
     }
     isHover(point) {
-        const offsets = this.container.getBoundingClientRect();
-        const x = offsets.left;
-        const y = offsets.top;
-        const width = this.size.width;
-        const height = this.size.height;
-
-        var isX = false;
-        if (x < point.x && point.x < (x + width)) {
-            isX = true;
-        }
-        var isY = false;
-        if (y < point.y && point.y < (y + height)) {
-            isY = true;
-        }
-        return isX && isY;
+        var getBoundingClientRect = this.container.getBoundingClientRect.bind(this.container);
+        return isHoverFunc(getBoundingClientRect, this.size)(point);
     }
 
 }
