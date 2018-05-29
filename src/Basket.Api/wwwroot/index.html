@@ -36,32 +36,29 @@
 
 <body>
     <script type="module">
-        import MainComponent from './MainComponent.js';
-        var mainComponent = new MainComponent(document);
-        var main = document.getElementById("main");
-        main.addEventListener("mousemove", mainComponent.mouseMove);
-        main.addEventListener("mousedown", mainComponent.mouseDown);
+
+        import BasketPanel from './BasketPanel.js';
+        var basketPanel = new BasketPanel(document);
+
+        import ArticlePanel from './ArticlePanel.js';
+        var articlePanel = new ArticlePanel(document, basketPanel);
+        var article = document.getElementById("articlePanel");
+        article.addEventListener("mousemove", articlePanel.mouseMove);
+        article.addEventListener("mousedown", articlePanel.mouseDown);
+
     </script>
 
 	<h1>[My Basket]</h1>
 
 	<p>Fullfill the basket and view the computed price!</p>
 
-	<div class="article" id="main">
+	<div class="article" id="articlePanel">
 		<div style="background-color:coral; width:8px;height:8px;position:absolute;">
 		</div>
 	</div>
 
-	<div class="basket">
-		<h2>Basket</h2>
-		<span>Basket is empty</span>
-		<ul>
-			<li>3 Chair - 75€</li>
-			<li>1 Fridge - 450€</li>
-			<li>
-				<b>Total: 525€</b>
-			</li>
-		</ul>
+	<div class="basket" id="basketPanel">
+		
 	</div>
 
 </body>

@@ -1,9 +1,11 @@
 
-export default class ArticleComponent {
+import Component from "./Component.js";
 
-    constructor(id, src, position) {
+export default class ArticleComponent extends Component{
+
+    constructor(parentContainer, id, label, src, position) {
         const size = { width: 50, height: 50 };
-        this.size = size;
+
         const container = document.createElement('img');
         container.src = src;
         container.style.width = size.width + "px";
@@ -13,11 +15,13 @@ export default class ArticleComponent {
             container.style.top = position.top + "px";
             container.style.left = position.left + "px";
         }
-
         const mouseSelectedPosition = { x: 0, y: 0 };
+        super(parentContainer, container);
         this.mouseSelectedPosition = mouseSelectedPosition;
         this.isSelected = false;
-        this.container = container;
+        this.size = size;
+        this.id = id;
+        this.label = label;
     }
     setSelected(point) {
         const offsets = this.container.getBoundingClientRect();

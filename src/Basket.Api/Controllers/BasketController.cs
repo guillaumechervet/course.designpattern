@@ -22,10 +22,15 @@ namespace Basket.Api.Controllers
             public List<BasketLineArticle> BasketLineArticles { get; set; }
         }
 
-        [HttpPost]
-        public int Post([FromBody]BasketModel basketModel)
+        public class BasketResult
         {
-            return _basketOperation.CalculateAmount(basketModel.BasketLineArticles);
+            public int Total { get; set; }
+        }
+
+        [HttpPost]
+        public BasketResult Post([FromBody]BasketModel basketModel)
+        {
+            return new BasketResult() { Total = _basketOperation.CalculateAmount(basketModel.BasketLineArticles) };
         }
 
     }

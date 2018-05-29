@@ -1,25 +1,18 @@
 import Article from "./ArticleComponent.js";
 import Basket from "./BasketComponent.js";
 
-export default class MainComponent {
-    constructor(document) {
-        this.container = document.getElementById("main");
+export default class ArticlePanel {
+    constructor(document, basketPanel) {
+        this.container = document.getElementById("articlePanel");
         this.mouseDown = this.mouseDown.bind(this);
         this.mouseMove = this.mouseMove.bind(this);
         this.items = [];
-        this.fixedFridge = new Article("id", "./img/fridge.jpg");
-        this.fixedChair = new Article("id", "./img/chair.jpg");
-        this.fixedBanana = new Article("id", "./img/banana.jpg");
-        this.fixedGrumly = new Article("id", "./img/grumly.jpg");
-        this.fixedBasket = new Basket("id", { left: 20, top: 400 });
-        this.appendChild(this.fixedFridge);
-        this.appendChild(this.fixedChair);
-        this.appendChild(this.fixedBanana);
-        this.appendChild(this.fixedGrumly);
-        this.appendChild(this.fixedBasket);
-    }
-    appendChild(childComponent) {
-        this.container.appendChild(childComponent.container);
+        this.fixedFridge = new Article(this.container, "2", "Fridge", "./img/fridge.jpg");
+        this.fixedChair = new Article(this.container, "3", "Chair", "./img/chair.jpg");
+        this.fixedBanana = new Article(this.container, "1", "banana", "./img/banana.jpg");
+        this.fixedGrumly = new Article(this.container, "4", "grumly", "./img/grumly.jpg");
+        this.fixedBasket = new Basket(this.container, { left: 20, top: 400 });
+        this.basketPanel = basketPanel;
     }
     removeChild(childComponent) {
         this.container.removeChild(childComponent.container);
@@ -35,13 +28,14 @@ export default class MainComponent {
                 if (index > -1) {
                     this.items.splice(index, 1);
                     this.removeChild(selectedArticle);
+                    this.basketPanel.add({ Id: "1", Number: 2, Label: "Fridge" });
                 }
             }
         }
         else {
 
             if (this.fixedFridge.isHover({ x: cX, y: cY })) {
-                const fridge = new Article("id", "./img/fridge.jpg", this.fixedFridge.container.getBoundingClientRect());
+                const fridge = new Article(this.container, this.fixedFridge.id, this.fixedFridge.label, "./img/fridge.jpg", this.fixedFridge.container.getBoundingClientRect());
                 fridge.setSelected({ x: cX, y: cY });
                 this.items.push(fridge);
             }

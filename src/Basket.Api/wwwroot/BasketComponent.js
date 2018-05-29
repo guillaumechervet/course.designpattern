@@ -1,8 +1,10 @@
 
+import Component from "./Component.js";
 
-export default class BasketComponent {
 
-    constructor(id, src, position) {
+export default class BasketComponent extends Component {
+
+    constructor(parentContainer, position) {
         const size = { width: 100, height: 100 };
 
         const image = document.createElement('img');
@@ -14,10 +16,10 @@ export default class BasketComponent {
             image.style.top = position.top + "px";
             image.style.left = position.left + "px";
         }
-        this.container = image;
+       
+        super(parentContainer, image);
         this.size = size;
     }
-
     isHover(point) {
         const offsets = this.container.getBoundingClientRect();
         const x = offsets.left;
