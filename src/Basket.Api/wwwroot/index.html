@@ -36,11 +36,11 @@
 
 <body>
     <script type="module">
-        import MainContainer from './MainContainer.js';
-        var mainContainer = new MainContainer(document);
+        import MainComponent from './MainComponent.js';
+        var mainComponent = new MainComponent(document);
         var main = document.getElementById("main");
-        main.addEventListener("mousemove", mainContainer.mouseMove);
-        main.addEventListener("mousedown", mainContainer.mouseDown);
+        main.addEventListener("mousemove", mainComponent.mouseMove);
+        main.addEventListener("mousedown", mainComponent.mouseDown);
     </script>
 
 	<h1>[My Basket]</h1>

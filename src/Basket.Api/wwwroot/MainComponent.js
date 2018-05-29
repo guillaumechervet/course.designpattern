@@ -1,7 +1,7 @@
-import Article from './Article.js';
-import Basket from './Basket.js';
+import Article from "./ArticleComponent.js";
+import Basket from "./BasketComponent.js";
 
-export default class MainContainer {
+export default class MainComponent {
     constructor(document) {
         this.container = document.getElementById("main");
         this.mouseDown = this.mouseDown.bind(this);
@@ -12,6 +12,17 @@ export default class MainContainer {
         this.fixedBanana = new Article("id", "./img/banana.jpg");
         this.fixedGrumly = new Article("id", "./img/grumly.jpg");
         this.fixedBasket = new Basket("id", { left: 20, top: 400 });
+        this.appendChild(this.fixedFridge);
+        this.appendChild(this.fixedChair);
+        this.appendChild(this.fixedBanana);
+        this.appendChild(this.fixedGrumly);
+        this.appendChild(this.fixedBasket);
+    }
+    appendChild(childComponent) {
+        this.container.appendChild(childComponent.container);
+    }
+    removeChild(childComponent) {
+        this.container.removeChild(childComponent.container);
     }
     mouseDown(event) {
         const cX = event.clientX;
@@ -23,14 +34,14 @@ export default class MainContainer {
                 const index = this.items.indexOf(selectedArticle);
                 if (index > -1) {
                     this.items.splice(index, 1);
-                    selectedArticle.remove();
+                    this.removeChild(selectedArticle);
                 }
             }
         }
         else {
 
             if (this.fixedFridge.isHover({ x: cX, y: cY })) {
-                const fridge = new Article("id", "./img/fridge.jpg", this.fixedFridge.getPosition());
+                const fridge = new Article("id", "./img/fridge.jpg", this.fixedFridge.container.getBoundingClientRect());
                 fridge.setSelected({ x: cX, y: cY });
                 this.items.push(fridge);
             }

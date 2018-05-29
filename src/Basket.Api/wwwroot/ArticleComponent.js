@@ -1,59 +1,46 @@
 
-export default class Article {
+export default class ArticleComponent {
 
     constructor(id, src, position) {
         const size = { width: 50, height: 50 };
         this.size = size;
-        const image = document.createElement('img');
-        image.src = src;
-        image.style.width = size.width + "px";
-        image.style.height = size.height + "px";
-        const container = document.getElementById("main");
-        container.appendChild(image);
-        this.container = container;
+        const container = document.createElement('img');
+        container.src = src;
+        container.style.width = size.width + "px";
+        container.style.height = size.height + "px";
         if (position) {
-            image.style.position = "absolute";
-            image.style.top = position.top + "px";
-            image.style.left = position.left + "px";
+            container.style.position = "absolute";
+            container.style.top = position.top + "px";
+            container.style.left = position.left + "px";
         }
 
         const mouseSelectedPosition = { x: 0, y: 0 };
         this.mouseSelectedPosition = mouseSelectedPosition;
         this.isSelected = false;
-        this.image = image;
+        this.container = container;
     }
     setSelected(point) {
-        const offsets = this.image.getBoundingClientRect();
+        const offsets = this.container.getBoundingClientRect();
         this.mouseSelectedPosition.x = point.x - offsets.x;
         this.mouseSelectedPosition.y = point.y - offsets.y;
         this.isSelected = true;
 
-        this.image.style.position = "absolute";
-        this.image.style.top = offsets.top + "px";
-        this.image.style.left = offsets.left + "px";
+        this.container.style.position = "absolute";
+        this.container.style.top = offsets.top + "px";
+        this.container.style.left = offsets.left + "px";
     }
 
     unselect() {
         this.isSelected = false;
     }
-
-    remove() {
-        this.container.removeChild(this.image);
-    }
-
     move(point) {
         const x = (point.x - this.mouseSelectedPosition.x);
         const y = (point.y - this.mouseSelectedPosition.y);
-        this.image.style.top = y + "px";
-        this.image.style.left = x + "px";
+        this.container.style.top = y + "px";
+        this.container.style.left = x + "px";
     }
-
-    getPosition() {
-        return this.image.getBoundingClientRect();
-    }
-
     isHover(point) {
-        const offsets = this.image.getBoundingClientRect();
+        const offsets = this.container.getBoundingClientRect();
         const x = offsets.left;
         const y = offsets.top;
         const width = this.size.width;
