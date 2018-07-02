@@ -44,7 +44,7 @@ namespace BasketTest
                         amount += article.Price * 100 + article.Price * 12;
                         break;
                     case "electronic":
-                        amount += article.Price * 100 + article.Price * 20 + 4;
+                        amount += article.Price * 100 + article.Price * 20 + 4*100;
                         break;
                     case "desktop":
                         amount += article.Price * 100 + article.Price * 20;
@@ -54,7 +54,7 @@ namespace BasketTest
                 amountTotal += amount * basketLineArticle.Number;
             }
 
-            Assert.AreEqual(84868, amountTotal);
+            Assert.AreEqual(85264, amountTotal);
         }
     }
 
