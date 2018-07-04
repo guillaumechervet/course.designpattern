@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-namespace Basket
+namespace BasketLib
 {
     public static class ExternalLogger
     {

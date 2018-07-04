@@ -1,4 +1,4 @@
-namespace Basket
+namespace BasketLib
 {
     public struct BasketLineArticle
     {

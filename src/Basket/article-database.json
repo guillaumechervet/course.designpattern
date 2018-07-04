@@ -19,12 +19,5 @@
     "Category": "desktop",
     "Price": 49,
     "Stock": 68
-  },
-  {
-    "Id": "4",
-    "Label": "Grumly",
-    "Category": "toy",
-    "Price": 39,
-    "Stock": 55
   }
 ]
